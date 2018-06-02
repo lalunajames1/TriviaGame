@@ -1,0 +1,27 @@
+html{
+
+}
+
+body{
+   background: url(footer_lodyas/footer_lodyas.png);
+   font:arial;
+  
+}
+
+header{
+    margin-bottom: 30px;
+}
+
+.container{
+    width: 1024px;
+    margin: 0 auto;
+    border: 1px solid red;
+}
+
+.row {
+    background-color: rgb(255, 255, 255, .2);
+}
+
+.center {
+    text-align: center;
+}
