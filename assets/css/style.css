@@ -5,6 +5,7 @@ html{
 body{
    background: url(footer_lodyas/footer_lodyas.png);
    font:arial;
+   color:#e0e0e0;
   
 }
 
@@ -16,12 +17,35 @@ header{
     width: 1024px;
     margin: 0 auto;
     border: 1px solid red;
-}
-
-.row {
     background-color: rgb(255, 255, 255, .2);
 }
+
+
 
 .center {
     text-align: center;
 }
+
+.btn{
+    width:200px;
+    height: 50px;
+    background-color: #0d93ec;
+    border-radius: 5px;
+    border: none;
+    display: block;
+
+}
+
+#firstButton{
+
+}
+
+.row {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+ }
+ 
+ .col {
+     flex: 0 0 20%;
+ }
