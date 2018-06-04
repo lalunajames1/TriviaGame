@@ -9,7 +9,7 @@ var wrong = "The right answer is ";
 
 // Array of questions
 var questions = [
-"He was a pioneer of rock & roll and one of his songs was feature on the movie Back to the Future",
+"He was a pioneer of rock & roll and one of his songs was featured on the movie Back to the Future.",
 "Which American folk singer from the 60\’s recently won a Nobel prize?",
 "Who is the god father of Punk rock?",
 "Name a popular band from the 1960s British invasion?",
@@ -22,7 +22,8 @@ var answers = [
         ans2: "Chuck Berry", 
         ans3: "Jerry Lee Lewis", 
         ans4: "Elvis Presley",
-        correctAns: "Chuck Berry" 
+        correctAns: "Chuck Berry", 
+        giphy1: '<iframe src="https://giphy.com/embed/8QF203m8lFA5O" width="480" height="365" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>'
     },
     {
         ans1: "Bob Dylan", 
@@ -63,6 +64,7 @@ $("#firstButton").on("click", function(){
 
 //Adds answer buttons
 function addButtons() {
+$("#main-content").append('<div class="margin-bottom">')    
 $("#main-content").append(clone);
 correctFalse()
 }
@@ -103,16 +105,16 @@ function correctFalse(){ //Why do I have to create this wrapper function and cal
    }
 
   function correctAnswerMsg(){
-         $("#question").text(congrats + " " + correctAnswer);
+         $("#question").text(congrats + " " + correctAnswer + ".");
          $("#gone-at-first").remove();
-         setTimeout(function(){ addButtons(); grabQuestion();  }, 3000);
+         setTimeout(function(){ addButtons(); grabQuestion(); }, 3000);
     
   }
  
   function wrongAnswerMsg(){
-    $("#question").text(wrong +  " " + correctAnswer);
+    $("#question").text(wrong +  " " + correctAnswer + ".");
     $("#gone-at-first").remove();
-    setTimeout(function(){ addButtons(); grabQuestion();  }, 3000);
+    setTimeout(function(){ addButtons(); grabQuestion(); }, 3000);
   }
 
 });

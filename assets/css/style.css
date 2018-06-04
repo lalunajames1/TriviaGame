@@ -1,11 +1,16 @@
-html{
+@import url('https://fonts.googleapis.com/css?family=Monoton|Scada');
 
+
+html{
+ position:relative;
+ min-height: 100%;
 }
 
 body{
    background: url(footer_lodyas/footer_lodyas.png);
-   font:arial;
+   font-family: 'Scada', sans-serif;
    color:#e0e0e0;
+   font-size: 20px;
   
 }
 
@@ -16,36 +21,71 @@ header{
 .container{
     width: 1024px;
     margin: 0 auto;
-    border: 1px solid red;
     background-color: rgb(255, 255, 255, .2);
 }
-
 
 
 .center {
     text-align: center;
 }
 
-.btn{
+h1{
+    padding: 15px 0 15px 0;
+    font-family: 'Monoton', cursive;
+    font-size:60px;
+    
+}
+
+
+#firstButton {
+    width: 300px;
+    font-family: 'Scada', sans-serif;
+    font-size: 30px;
+    border-radius: 10px;
+    background-color: #004879;
+    color: #fff;
+    border: none;
+    
+}
+
+/* This class is added dynamically with jquery */
+.margin-bottom {
+    margin-bottom: 20px;
+}
+
+.btn {
     width:200px;
-    height: 50px;
-    background-color: #0d93ec;
-    border-radius: 5px;
+    height: 65px;
+    background-color: #004879;
+    border-radius: 10px;
     border: none;
     display: block;
+    font-family: 'Scada', sans-serif;
+    color:#e2e2e2;
+    font-size: 20px;
 
 }
 
-#firstButton{
+.margin-right {
+    margin-right: 40px;
+}
 
+.margin-left {
+    margin-left: 40px;
+}
+
+.margin-bottom {
+   margin-bottom: 30px;
 }
 
 .row {
+    padding: 15px 0 15px 0;
     display: flex;
     display: -webkit-flex;
     align-items: center;
+    justify-content: center;
  }
  
  .col {
-     flex: 0 0 20%;
+     flex:0;
  }
