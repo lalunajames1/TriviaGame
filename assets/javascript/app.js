@@ -5,6 +5,7 @@ var userPick = " ";
 var correctAnswer = " ";
 var congrats = "Congratulations! The answer is ";
 var wrong = "The right answer is ";
+var qAnswered = 0;
 
 
 // Array of questions
@@ -40,11 +41,11 @@ var answers = [
         correctAns: "Iggy Pop" 
     },
     {
-    ans1: "The Doors",
-    ans2: "The Beach Boys",
-    ans3: "The Bealtes",
-    ans4: "Credence Clearwater Revival",
-    correctAns: "The Bealtes"
+        ans1: "The Doors",
+        ans2: "The Beach Boys",
+        ans3: "The Bealtes",
+        ans4: "Credence Clearwater Revival",
+        correctAns: "The Bealtes"
     }
 ]
 
@@ -60,6 +61,7 @@ $("#firstButton").on("click", function(){
     $(this).remove();
     addButtons() //Adds answer buttons
     grabQuestion(); //  **** Why do I have to do this? ****
+
 });
 
 //Adds answer buttons
@@ -69,25 +71,32 @@ $("#main-content").append(clone);
 correctFalse()
 }
 
+//This adds a question to the html document and executes the sendAnswers function
+function grabQuestion(){
+    $("#question").text(questions[numQuestion]);
+    if (qAnswered > 3){
+        endGame()
+    } else {
+    sendAnswers();
+   }
+}
+
 //This assigns a answer as a value to the button and an answer as text to the button and increases the numQuestion by 1
 function sendAnswers(){
     for (let i = 1; i <= 4; i++ ){
        $("#answer" + i).attr("data-value", answers[numQuestion]["ans" + i]);
        $("#answer" + i).text(answers[numQuestion]["ans" + i]);
+      
 // answers[0].ans1 This is the same as the code above
 // answers[0].ans3
 // answers[0].ans4
 console.log("working") // This helps see if this function is working
     }
     correctAnswer = answers[numQuestion]["correctAns"];
-    numQuestion++
     console.log(numQuestion)
-}
+    numQuestion++;
+    qAnswered++
 
-//This adds a question to the html document and executes the sendAnswers function
-function grabQuestion(){
-   $("#question").text(questions[numQuestion]);
-   sendAnswers();
 }
 
 //This listens to the click event and grabs the balue form the button to compare it to the correct asnwer
@@ -102,19 +111,26 @@ function correctFalse(){ //Why do I have to create this wrapper function and cal
            wrongAnswerMsg();
        }
      })
+
    }
 
   function correctAnswerMsg(){
          $("#question").text(congrats + " " + correctAnswer + ".");
          $("#gone-at-first").remove();
          setTimeout(function(){ addButtons(); grabQuestion(); }, 3000);
-    
   }
  
   function wrongAnswerMsg(){
     $("#question").text(wrong +  " " + correctAnswer + ".");
     $("#gone-at-first").remove();
     setTimeout(function(){ addButtons(); grabQuestion(); }, 3000);
+    
   }
+
+
+function endGame() {
+    $("#question").text("Do you want to try again?");
+    $("#gone-at-first").remove();
+}
 
 });
