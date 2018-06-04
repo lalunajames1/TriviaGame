@@ -66,6 +66,10 @@ h1{
 
 }
 
+.btn:hover, .btn:active, #firstButton:hover, #firstButton:active {
+    background-color: #0e5788;
+}
+
 .margin-right {
     margin-right: 40px;
 }
