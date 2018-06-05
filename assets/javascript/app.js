@@ -59,16 +59,16 @@ $("#gone-at-first").remove();
 
 $("#firstButton").on("click", function(){
     $(this).remove();
-    addButtons() //Adds answer buttons
-    grabQuestion(); //  **** Why do I have to do this? ****
-
+    addButtons(); //Adds answer buttons
+    grabQuestion(); 
 });
 
 //Adds answer buttons
 function addButtons() {
-$("#main-content").append('<div class="margin-bottom">')    
+$("#main-content").attr('class', "margin-bottom");    
 $("#main-content").append(clone);
-correctFalse()
+addBtnListener() //  **** Why do I have to do this? ****
+
 }
 
 //This adds a question to the html document and executes the sendAnswers function
@@ -87,10 +87,10 @@ function sendAnswers(){
        $("#answer" + i).attr("data-value", answers[numQuestion]["ans" + i]);
        $("#answer" + i).text(answers[numQuestion]["ans" + i]);
       
-// answers[0].ans1 This is the same as the code above
-// answers[0].ans3
-// answers[0].ans4
-console.log("working") // This helps see if this function is working
+    // answers[0].ans1 This is the same as the code above
+    // answers[0].ans3
+    // answers[0].ans4
+       // console.log("working") // This helps see if this function is working
     }
     correctAnswer = answers[numQuestion]["correctAns"];
     console.log(numQuestion)
@@ -100,11 +100,11 @@ console.log("working") // This helps see if this function is working
 }
 
 //This listens to the click event and grabs the balue form the button to compare it to the correct asnwer
-function correctFalse(){ //Why do I have to create this wrapper function and call it?
+function addBtnListener(){ //Why do I have to create this wrapper function and call it?
   $(".btn").on("click", function(){
      userPick = $(this).attr("data-value");
-       console.log(userPick);
-       console.log(correctAnswer);
+     //  console.log(userPick);
+     //  console.log(correctAnswer);
        if (userPick === correctAnswer){
        correctAnswerMsg();
        } else {
@@ -127,10 +127,26 @@ function correctFalse(){ //Why do I have to create this wrapper function and cal
     
   }
 
-
 function endGame() {
     $("#question").text("Do you want to try again?");
     $("#gone-at-first").remove();
+    let button = $("<button>").text('Restart the Game').attr("class", "class-for-last-btn");
+    $(button).on("click", function(){
+      reset();
+      $(this).remove()
+    })
+    $("#last-button").html(button);
 }
+
+function reset(){
+    numQuestion = 0;
+    qAnswered = 0;
+    userPick = " ";
+    correctAnswer = " ";
+    $("#last-button").empty();
+    addButtons();
+    grabQuestion();
+}
+
 
 });

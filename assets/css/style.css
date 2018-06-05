@@ -37,7 +37,7 @@ h1{
 }
 
 
-#firstButton {
+#firstButton, .class-for-last-btn {
     width: 300px;
     font-family: 'Scada', sans-serif;
     font-size: 30px;
@@ -66,7 +66,7 @@ h1{
 
 }
 
-.btn:hover, .btn:active, #firstButton:hover, #firstButton:active {
+.class-for-last-btn:hover, .class-for-last-btn:active, .btn:hover, .btn:active, #firstButton:hover, #firstButton:active {
     background-color: #0e5788;
 }
 
