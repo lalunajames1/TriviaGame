@@ -67,7 +67,7 @@ $("#firstButton").on("click", function(){
 function addButtons() {
 $("#main-content").attr('class', "margin-bottom");    
 $("#main-content").append(clone);
-addBtnListener() //  **** Why do I have to do this? ****
+//addBtnListener() //  **** Why do I have to do this? ****
 
 }
 
@@ -96,12 +96,11 @@ function sendAnswers(){
     console.log(numQuestion)
     numQuestion++;
     qAnswered++
-
 }
 
-//This listens to the click event and grabs the balue form the button to compare it to the correct asnwer
-function addBtnListener(){ //Why do I have to create this wrapper function and call it?
-  $(".btn").on("click", function(){
+//This listens to the click event and grabs the balue from the button to compare it to the correct asnwer
+// function addBtnListener(){ <-- this work the same as the document fuction below.
+  $(document).on("click", '.btn', function(){
      userPick = $(this).attr("data-value");
      //  console.log(userPick);
      //  console.log(correctAnswer);
@@ -112,7 +111,7 @@ function addBtnListener(){ //Why do I have to create this wrapper function and c
        }
      })
 
-   }
+//    }
 
   function correctAnswerMsg(){
          $("#question").text(congrats + " " + correctAnswer + ".");
@@ -123,8 +122,14 @@ function addBtnListener(){ //Why do I have to create this wrapper function and c
   function wrongAnswerMsg(){
     $("#question").text(wrong +  " " + correctAnswer + ".");
     $("#gone-at-first").remove();
-    setTimeout(function(){ addButtons(); grabQuestion(); }, 3000);
-    
+    var timer = setTimeout(countDown, 3000);;
+    var seconds = 3
+    function countDown(){ 
+        addButtons(); 
+        grabQuestion(); 
+        seconds--
+    }
+    $("giphy").append(seconds)
   }
 
 function endGame() {
